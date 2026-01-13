@@ -1,7 +1,5 @@
-import React from 'react'
-
-export default function index() {
+export default function Home() {
   return (
-    <div>index</div>
+    <div className='text-chocolate'>Home</div>
   )
 }
