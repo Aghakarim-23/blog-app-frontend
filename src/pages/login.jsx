@@ -1,11 +1,16 @@
 import Link from "next/link";
 import { useState } from "react";
+import { FiEye, FiEyeOff } from "react-icons/fi";
+
 
 export default function Login() {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
+
+  const [ showPassword, setShowPassword ] = useState(false);
+  
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -45,12 +50,12 @@ export default function Login() {
             />
           </div>
 
-          <div>
+          <div className="relative">
             <label htmlFor="password" className="block mb-1">
               Password
             </label>
             <input
-              type="password"
+              type={`${showPassword ? "text" : "password"}`}
               name="password"
               id="password"
               placeholder="Enter your password"
@@ -59,6 +64,11 @@ export default function Login() {
               required
               onChange={handleChange}
             />
+            <button type="button" className="absolute top-11 right-3 text-gray-500 cursor-pointer hover:text-gray-600 transition"
+              onClick={() => setShowPassword(prev => !prev)}
+            >
+              {showPassword ? <FiEye/> : <FiEyeOff/> }
+            </button>
           </div>
 
           <div className="my-3">
