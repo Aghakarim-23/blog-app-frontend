@@ -6,9 +6,9 @@ export default function App({ Component, pageProps }) {
 
   const getLayout = Component.getLayout || ((page) => <Layout>{page}</Layout>);
 
-  return getLayout(
+  return (
     <AuthProvider>
-      <Component {...pageProps} />
+      {getLayout(<Component {...pageProps} />)}
     </AuthProvider>
   );
 }

@@ -8,8 +8,8 @@ import { useAuth } from "@/context/AuthContext";
 
 export default function Login() {
   const [formData, setFormData] = useState({
-    email: "",
-    password: "",
+    email: "hemidzade1010@gmail.com",
+    password: "123456",
   });
 
   const [showPassword, setShowPassword] = useState(false);

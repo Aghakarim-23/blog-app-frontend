@@ -7,15 +7,15 @@ export default function Home() {
   const { user, loading } = useAuth();
   const router = useRouter();
 
-  useEffect(() => {
-    if (!loading && !user) {
-      router.push("/login");
-    }
-  }, [loading, user]);
+  // useEffect(() => {
+  //   if (!loading && !user) {
+  //     router.push("/login");
+  //   }
+  // }, [loading, user]);
 
-  if (loading) return <div>Loading...</div>;
+  // if (loading) return <div>Loading...</div>;
 
-  if (!user) return null;
+  // if (!user) return null;
 
   return (
     <>
@@ -23,7 +23,7 @@ export default function Home() {
         <title>Home</title>
       </Head>
       <div>
-        <h1>Welcome, {user.username}!</h1>
+        <h1>Welcome!</h1>
         <p>This is your home page.</p>
       </div>
     </>

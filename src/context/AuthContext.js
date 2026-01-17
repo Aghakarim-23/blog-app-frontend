@@ -44,7 +44,7 @@ export const AuthProvider = ({ children }) => {
 
   const logout = async () => {
     try {
-      await api.post("/auth/logout", {}, { withCredentials: true });
+      await api.post("/logout", {}, { withCredentials: true });
       setUser(null);
       router.push("/login");
     } catch (error) {
