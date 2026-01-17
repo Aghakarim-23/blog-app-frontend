@@ -3,8 +3,8 @@ import Head from "next/head";
 import Link from "next/link";
 import { useContext, useState } from "react";
 import { FiEye, FiEyeOff } from "react-icons/fi";
-import { AuthContext } from "@/context/AuthContext";
 import { useRouter } from "next/router";
+import { useAuth } from "@/context/AuthContext";
 
 export default function Login() {
   const [formData, setFormData] = useState({
@@ -20,7 +20,7 @@ export default function Login() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const { login } = useContext(AuthContext);
+  const { login } = useAuth();
   const router = useRouter();
 
   const handleSubmit = async () => {
