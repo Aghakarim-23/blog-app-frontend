@@ -13,11 +13,13 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const fetchMe = async () => {
       try {
-        const res = await api.get("/api/auth/me", {
+        const res = await api.get("/me", {
           withCredentials: true,
         });
 
         setUser(res.data.user);
+        console.log("Fetched user:", res.data.user);
+
       } catch (error) {
         setUser(null);
         console.error(error?.response?.data.message);
@@ -29,16 +31,9 @@ export const AuthProvider = ({ children }) => {
     fetchMe();
   }, []);
 
-  useEffect(() => {
-    const publicRoutes = ["/login", "/register", "/forgot-password"];
-
-    if (!user && !loading && !publicRoutes.includes(router.pathname)) {
-      router.push("/login");
-    }
-  }, [user, loading, router.pathname]);
 
   const login = async (formData) => {
-    const res = await api.post("/auth/login", formData, {
+    const res = await api.post("/login", formData, {
       withCredentials: true,
     });
 
@@ -58,7 +53,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ user, login, logout, loading }}>
       {children}
     </AuthContext.Provider>
   );
