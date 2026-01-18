@@ -22,7 +22,7 @@ export default function Home() {
       <Head>
         <title>Home</title>
       </Head>
-      <div>
+      <div className="min-h-screen">
         <h1>Welcome!</h1>
         <p>This is your home page.</p>
       </div>

@@ -17,7 +17,7 @@ export default function BlogDetail({ id }) {
       <Head>
         <title>Blog detail</title>
       </Head>
-      <div>Blog: {id}</div>
+      <div className="min-h-screen">Blog: {id}</div>
     </>
   );
 }

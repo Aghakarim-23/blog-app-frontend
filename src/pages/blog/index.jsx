@@ -1,3 +1,4 @@
+import BlogList from "@/components/BlogList";
 import Head from "next/head";
 
 export default function BlogPage() {
@@ -6,7 +7,9 @@ export default function BlogPage() {
       <Head>
         <title>Blog list</title>
       </Head>
-      <div>Home</div>
+      <div className="min-h-screen">
+        <BlogList />
+      </div>
     </>
   );
 }

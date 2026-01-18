@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { CiUser } from "react-icons/ci";
+import { FaRegUserCircle } from "react-icons/fa";
 import { useAuth } from "@/context/AuthContext";
 import { useState } from "react";
 
@@ -9,7 +9,7 @@ export default function Header() {
 
   return (
     <div>
-      <div className="h-14 md:h-16 lg:h-20 px-4 md:px-8 border-b flex justify-between items-center relative">
+      <div className="h-14 md:h-16 lg:h-20 px-4 md:px-8  flex justify-between items-center relative">
         <Link href={"/"}>Logo</Link>
         <nav className="flex gap-2 md:gap-4 lg:gap-6">
           <Link href={"/"}>Home</Link>
@@ -17,10 +17,10 @@ export default function Header() {
         </nav>
         {user?.username ? (
           <div
-            className="flex justify-center items-center gap-1 md:gap-2 lg:gap-4"
+            className="flex justify-center items-center gap-1 md:gap-2 lg:gap-4 border-2 border-gray-200 rounded-md px-1 cursor-pointer"
             onClick={() => setIsMenuOpen((prev) => !prev)}
           >
-            <CiUser />
+            <FaRegUserCircle/>
             <span>{user?.username}</span>
           </div>
         ) : (
@@ -31,9 +31,10 @@ export default function Header() {
         )}
         {isMenuOpen && (
           <div
-            className="absolute top-10 right-6 shadow-md p-3 rounded-md bg-gray-100"
+            className="absolute top-10 md:top-12 lg:top-14 right-6 lg:right-9 shadow-md p-3 rounded-md bg-gray-100 flex flex-col gap-2"
             onClick={() => setIsMenuOpen((prev) => !prev)}
           >
+            <Link href={"/dashboard"}>Dashboard</Link>
             <button className="cursor-pointer" type="button" onClick={() => logout()}>Logout</button>
           </div>
         )}
