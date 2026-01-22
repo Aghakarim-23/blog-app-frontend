@@ -18,8 +18,6 @@ export const AuthProvider = ({ children }) => {
         });
 
         setUser(res.data.user);
-        console.log("Fetched user:", res.data.user);
-
       } catch (error) {
         setUser(null);
         console.error(error?.response?.data.message);

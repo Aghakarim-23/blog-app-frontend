@@ -1,10 +1,13 @@
+import moment from "moment/moment";
+import Link from "next/link";
+
 export default function BlogCard({ blogs }) {
-  const { _id, img, title, content, author, tags, createdAt } = blogs;
+  const { _id, image, title, content, author, tags, createdAt } = blogs;
   return (
-    <div className="rounded-md overflow-hidden border border-gray-300 ">
-      <img src={img} alt="blog_image" className="w-full h-50 object-cover" />
+    <Link href={`/blog/${_id}`} className="rounded-md overflow-hidden border border-gray-300 ">
+      <img src={image} alt="blog_image" className="w-full h-50 object-cover" />
       <div className="p-4 flex flex-col gap-3">
-        <div className="flex gap-2">
+        {/* <div className="flex gap-2">
           {tags.map((tag, index) => (
             <span
               key={index}
@@ -13,13 +16,13 @@ export default function BlogCard({ blogs }) {
               {tag}
             </span>
           ))}
-        </div>
-        <p>{title}</p>
+        </div> */}
+        <p className="text-lg font-semibold leading-snug">{title}</p>
         <div className="flex justify-between">
-          <span>{author?.username}</span>
-          <span>{new Date(createdAt).toLocaleDateString()}</span>
+          <span  className="font-medium">{author?.username}</span>
+          <span>{moment(createdAt).format("D MMM YYYY HH:mm")}</span>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
